@@ -1,6 +1,6 @@
-import Header from '../component/header.js'
-import Hero from '../component/hero.js'
-import Footer from '../component/footer.js'
+import Header from '../compornents/header.js'
+import Hero from '../compornents/hero.js'
+import Footer from '../compornents/footer.js'
 const Home = () => {
   return (
     <>

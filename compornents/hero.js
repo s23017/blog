@@ -4,5 +4,4 @@ const Hero = () => (
     <p>アウトプットしていくサイト</p>
   </div>
 )
-
 export default Hero
