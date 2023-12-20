@@ -7,7 +7,6 @@ import {
   TwoColumnMain,
   TwoColumnSidebar
 } from 'components/two-column'
-
 export default function About () {
   return (
     <Container>
