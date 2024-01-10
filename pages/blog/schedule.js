@@ -10,7 +10,7 @@ const Schedule = ({ title, publish, content, eyecatch, categories }) => {
 }
 
 const getStaticProps = async () => {
-  const slug = 'music'
+  const slug = 'schedule'
   const post = await getPostBySlug(slug)
   return {
     props: {
