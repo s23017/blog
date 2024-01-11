@@ -1,5 +1,6 @@
 import { getPostBySlug, getAllSlugs } from 'lib/api'
 import extractText from 'lib/extract-text'
+import { prevNextPost } from 'lib/prev-next-post'
 import Meta from 'components/meta'
 import Container from 'components/container'
 import PostHeader from 'components/post-header'
@@ -85,6 +86,9 @@ const getStaticProps = async context => {
   const { base64 } = await getPlaiceholder(eyecatch.url)
   eyecatch.blurDataURL = base64
 
+  const allSlugs = await getAllSlugs()
+  const [prevPost, nextPost] = prevNextPost(allSlugs, slug)
+
   return {
     props: {
       title: post.title,
@@ -93,6 +97,8 @@ const getStaticProps = async context => {
       eyecatch: eyecatch,
       categories: post.categories,
       description: description
+      prevPost: prevPost,
+      nextPost: nextPost,
     }
   }
 }
