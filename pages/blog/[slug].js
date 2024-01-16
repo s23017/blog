@@ -12,6 +12,7 @@ import {
 } from 'components/two-column'
 import ConvertBody from 'components/convert-body'
 import PostCategories from 'components/post-categories'
+import Pagination from 'components/pagination'
 import Image from 'next/image'
 import { getPlaiceholder } from 'plaiceholder'
 
@@ -23,9 +24,9 @@ const Post = ({
   content,
   eyecatch,
   categories,
-  description
+  description,
   prevPost,
-  nextPost,
+  nextPost
 }) => {
   return (
     <Container>
@@ -64,8 +65,12 @@ const Post = ({
             <PostCategories categories={categories} />
           </TwoColumnSidebar>
         </TwoColumn>
-    <div>{prevPost.title} {prevPost.slug}</div>
-    <div>{nextPost.title} {nextPost.slug}</div>
+        <Pagination
+          prevText={prevPost.title}
+          prevUrl={`/blog/${prevPost.slug}`}
+          nextText={nextPost.title}
+          nextUrl={`/blog/${nextPost.slug}`}
+        />
       </article>
     </Container>
   )
@@ -82,7 +87,6 @@ const getStaticProps = async context => {
   const slug = context.params.slug
 
   const post = await getPostBySlug(slug)
-
   const description = extractText(post.content)
 
   const eyecatch = post.eyecatch ?? eyecatchLocal
@@ -100,9 +104,9 @@ const getStaticProps = async context => {
       content: post.content,
       eyecatch: eyecatch,
       categories: post.categories,
-      description: description
+      description: description,
       prevPost: prevPost,
-      nextPost: nextPost,
+      nextPost: nextPost
     }
   }
 }
