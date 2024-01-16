@@ -24,6 +24,8 @@ const Post = ({
   eyecatch,
   categories,
   description
+  prevPost,
+  nextPost,
 }) => {
   return (
     <Container>
@@ -62,6 +64,8 @@ const Post = ({
             <PostCategories categories={categories} />
           </TwoColumnSidebar>
         </TwoColumn>
+    <div>{prevPost.title} {prevPost.slug}</div>
+    <div>{nextPost.title} {nextPost.slug}</div>
       </article>
     </Container>
   )
